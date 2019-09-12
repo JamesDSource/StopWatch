@@ -1,8 +1,10 @@
 package com.example.stopwatch;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.Chronometer;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String STATE = "chronometer_state";
     private boolean is_counting = false;
     private long last_number = SystemClock.elapsedRealtime();
     private Button bStart_stop;
@@ -92,5 +95,12 @@ public class MainActivity extends AppCompatActivity {
                 bStart_stop.setText("Start");
             }
         });
+
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong(STATE, chTime.getBase());
     }
 }
