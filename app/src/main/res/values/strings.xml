@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Stop Watch</string>
+    <string name="reset_string">Reset</string>
+    <string name="timer_time_string">Timer Time</string>
+    <string name="start_string">Start</string>
+    <string name="stop_string">Stop</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.stopwatch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         chTime.stop();
         last_number = SystemClock.elapsedRealtime();
         Listeners();
+        if(savedInstanceState != null){
+            chTime.setBase(savedInstanceState.getLong(STATE));
+            chTime.start();
+        }
     }
     @Override
     protected void onStart() {
@@ -74,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 if(is_counting){
                     chTime.stop();
                     last_number = SystemClock.elapsedRealtime();
-                    bStart_stop.setText("Start");
+                    bStart_stop.setText(R.string.start_string);
                     is_counting = false;
                 }
                 else if(!is_counting){
                     chTime.setBase(chTime.getBase() + (SystemClock.elapsedRealtime() - last_number));
                     chTime.start();
-                    bStart_stop.setText("Stop");
+
+                    bStart_stop.setText(R.string.stop_string);
                     is_counting = true;
                 }
             }
@@ -92,14 +98,13 @@ public class MainActivity extends AppCompatActivity {
                 last_number = SystemClock.elapsedRealtime();
                 chTime.stop();
                 is_counting = false;
-                bStart_stop.setText("Start");
+                bStart_stop.setText(R.string.start_string);
             }
         });
 
     }
-
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putLong(STATE, chTime.getBase());
     }
