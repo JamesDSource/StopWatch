@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume() called");
+        Log.d(TAG, "onResume: ");
     }
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG, "onRestart() called");
+        Log.d(TAG, "onRestart(): ");
     }
 
     @Override
