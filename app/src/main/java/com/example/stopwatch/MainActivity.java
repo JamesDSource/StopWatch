@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG, "onRestart(): ");
+        Log.d(TAG, "onRestart: ");
     }
 
     @Override
